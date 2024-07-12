@@ -63,21 +63,19 @@ public class Boj9017 {
             int fiveRank = 1001;
             for(int key : m.keySet()) {
 
-                if(m.get(key).size() == 6) {
-                    int score = 0;
+                int score = 0;
 
-                    for(int i = 0; i < 4; i++)
-                        score += m.get(key).get(i);
+                for(int i = 0; i < 4; i++)
+                    score += m.get(key).get(i);
 
-                    if(score < min) {
-                        min = score;
+                if(score < min) {
+                    min = score;
+                    answer = key;
+                    fiveRank = m.get(key).get(4);
+                } else if(score == min) {
+                    if(m.get(key).get(4) < fiveRank) {
                         answer = key;
                         fiveRank = m.get(key).get(4);
-                    } else if(score == min) {
-                        if(m.get(key).get(4) < fiveRank) {
-                            answer = key;
-                            fiveRank = m.get(key).get(4);
-                        }
                     }
                 }
             }
