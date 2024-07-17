@@ -78,18 +78,14 @@ public class Boj2310 {
             return;
         }
 
-        if(room[cur].get(0) == 1) {
-            for(int i = 2; i < room[cur].size(); i++) {
-                int next = room[cur].get(i) - 1;
+        for(int i = 2; i < room[cur].size(); i++) {
+            int next = room[cur].get(i) - 1;
+            if(room[cur].get(0) == 1) {
                 if(visited[next])
                     continue;
                 visited[next] = true;
                 dfs(next, visited, money);
-                visited[next] = false;
-            }
-        } else if(room[cur].get(0) == 2) {
-            for(int i = 2; i < room[cur].size(); i++) {
-                int next = room[cur].get(i) - 1;
+            } else if(room[cur].get(0) == 2) {
                 if(visited[next])
                     continue;
                 visited[next] = true;
@@ -97,19 +93,14 @@ public class Boj2310 {
                     dfs(next, visited, room[cur].get(1));
                 else
                     dfs(next, visited, money);
-                visited[next] = false;
-            }
-        } else if(room[cur].get(0) == 3) {
-            for(int i = 2; i < room[cur].size(); i++) {
-                int next = room[cur].get(i) - 1;
+            } else if(room[cur].get(0) == 3) {
                 if(visited[next] || room[cur].get(1) > money)
                     continue;
 
                 visited[next] = true;
                 dfs(next, visited, money - room[cur].get(1));
-                visited[next] = false;
             }
+            visited[next] = false;
         }
-
     }
 }
