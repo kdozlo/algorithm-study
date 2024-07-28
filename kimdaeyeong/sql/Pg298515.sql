@@ -2,4 +2,4 @@
 -- https://school.programmers.co.kr/learn/courses/30/lessons/298515
 select concat(max(length), 'cm') as 'MAX_LENGTH'
 from fish_info
-;
+WHERE LENGTH IS NOT NULL;
