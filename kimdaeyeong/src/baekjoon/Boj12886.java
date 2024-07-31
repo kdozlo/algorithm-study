@@ -18,11 +18,12 @@ public class Boj12886 {
         int B = Integer.parseInt(st.nextToken());
         int C = Integer.parseInt(st.nextToken());
 
-        boolean[][] visited = new boolean[1501][1501];
         int sum = A + B + C;
         int answer = 0;
+        boolean[][] visited = new boolean[1501][1501];
         visited[A][B] = true;
         visited[B][A] = true;
+
         if(sum % 3 == 0 && dfs(sum, A, B, visited)) {
             answer = 1;
         }
@@ -40,15 +41,23 @@ public class Boj12886 {
         int[] array = {a, b, c};
         boolean checked = false;
 
-        for(int i = 0; i < 3; i++) {
+        for(int i = 0; i < 2; i++) {
             for(int j = i + 1; j < 3; j++) {
                 if(array[i] != array[j]) {
-                    int na = array[i] > array[j] ? array[i] - array[j] : array[i] * 2;
-                    int nb = array[i] < array[j] ? array[j] - array[i] : array[j] * 2;
+                    int na = array[i] > array[j] ? array[i] - array[j] : array[i] << 1;
+                    int nb = array[i] < array[j] ? array[j] - array[i] : array[j] << 1;
 
                     if(!visited[na][nb]) {
+                        int nc = sum  - na - nb;
+
                         visited[na][nb] = true;
                         visited[nb][na] = true;
+
+                        visited[na][nc] = true;
+                        visited[nc][na] = true;
+
+                        visited[nc][nb] = true;
+                        visited[nb][nc] = true;
 
                         checked = dfs(sum, na, nb, visited);
                     }
