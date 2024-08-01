@@ -26,6 +26,7 @@ public class Boj18427 {
         for(int i = 1; i <= N; i++) {
             st = new StringTokenizer(br.readLine());
             l[i] = new ArrayList<>();
+            l[i].add(0); // 아무것도 안내는 경우
             while(st.hasMoreTokens()) {
                 l[i].add(Integer.parseInt(st.nextToken()));
             }
@@ -36,7 +37,6 @@ public class Boj18427 {
 
         for(int i = 1; i <= N; i++) {
             for(int j = 1; j <= H; j++) {
-                dp[i][j] += dp[i - 1][j]; // i번째가 아무것도 안내는 경우
 
                 // i번째가 h를 내는 경우
                 for(int h : l[i]) {
