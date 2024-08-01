@@ -32,17 +32,12 @@ public class Boj18427 {
             }
         }
 
-        for(int i = 0; i <= N; i++)
-            dp[i][0] = 1;
+        dp[0][0] = 1;
 
         for(int i = 1; i <= N; i++) {
-            for(int j = 1; j <= H; j++) {
-
-                // i번째가 h를 내는 경우
-                for(int h : l[i]) {
-                    if(j >= h) {
-                        dp[i][j] = (dp[i][j] + dp[i - 1][j - h]) % 10007;
-                    }
+            for(int h : l[i]) {
+                for(int j = h; j <= H; j++) {
+                    dp[i][j] = (dp[i][j] + dp[i - 1][j - h]) % 10007;
                 }
             }
         }
