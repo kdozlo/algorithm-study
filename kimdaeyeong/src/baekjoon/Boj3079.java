@@ -41,7 +41,7 @@ public class Boj3079 {
 
             if(sum >= M) {
                 right = mid - 1;
-                answer = Math.min(answer, mid);
+                answer = mid;
             } else {
                 left = mid + 1;
             }
