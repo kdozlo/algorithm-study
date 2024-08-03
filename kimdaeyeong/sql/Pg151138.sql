@@ -1,5 +1,7 @@
 -- PG 151138: 자동차 대여 기록에서 장기/단기 대여 구분하기
 -- https://school.programmers.co.kr/learn/courses/30/lessons/151138
+
+-- = 사용
 select
     HISTORY_ID,
     CAR_ID,
@@ -15,4 +17,15 @@ from
 where
     START_DATE between '2022-09-01' and '2022-09-30'
 order by history_id desc
+;
+
+-- strcmp 사용
+select
+    id, email, first_name, last_name
+from
+    DEVELOPER_INFOS
+where
+        strcmp(skill_1, 'Python') = 0 or strcmp(skill_2, 'Python') = 0 or strcmp(skill_3, 'Python') = 0
+order by
+    id
 ;
